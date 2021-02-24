@@ -1,4 +1,7 @@
+DROP TABLE IF EXISTS ord;
 DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS product;
+DROP TABLE IF EXISTS category;
 CREATE TABLE user (
     fname    varchar(15) not null,
     minit    varchar(1),
@@ -10,7 +13,11 @@ CREATE TABLE user (
     primary key (userid)
 );
 
-DROP TABLE IF EXISTS product;
+CREATE TABLE category (
+    cname   varchar(50) not null UNIQUE,
+    primary key (cname)
+);
+
 CREATE TABLE product (
     pname    varchar(50) not null,
     pid      int(5) not null UNIQUE,
@@ -19,10 +26,9 @@ CREATE TABLE product (
     price    float(9,2) not null,
     rating   int(2),
     primary key (pid),
-    foreign key (cname) references category(cname)
+    foreign key (cname) references category(cname) 
 );
 
-DROP TABLE IF EXISTS ord;
 CREATE TABLE ord (
     userid   varchar(15) not null,
     pid      int(5) not null,
@@ -35,10 +41,4 @@ CREATE TABLE ord (
     foreign key (pid) references product(pid)
 );
 
-DROP TABLE IF EXISTS category;
-CREATE TABLE category (
-    cname   varchar(50) not null UNIQUE,
-    primary key (cname)
-);
 
---This is a comment
