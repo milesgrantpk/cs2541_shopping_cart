@@ -7,6 +7,13 @@ app.secret_key = b'letsGoShopping'
 mydb = mysql.connector.connect(
   host = "ec2-54-175-198-125.compute-1.amazonaws.com",
   user = "milesgrant",
-  password = "seas2021",
-  database = "DB2541"
+  password = "seas",
+  database = "ShoppingCart"
 )
+
+@app.route('/')
+def home():
+  # Render the homepage 
+  return render_template("index.html", error_message="")
+
+app.run(host="ec2-54-175-198-125.compute-1.amazonaws.com", port=8080)
