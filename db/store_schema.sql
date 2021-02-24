@@ -15,20 +15,21 @@ CREATE TABLE product (
     pname    varchar(50) not null,
     pid      int(5) not null UNIQUE,
     cname    varchar(50) not null,
-    quantity int(7) UNSIGNED not null,
-    price    float(9,2) UNSIGNED not null,
-    rating   int(2) UNSIGNED,
+    quantity int(7) not null,
+    price    float(9,2) not null,
+    rating   int(2),
     primary key (pid),
     foreign key (cname) references category(cname)
 );
 
-DROP TABLE IF EXISTS order;
-CREATE TABLE order (
+DROP TABLE IF EXISTS ord;
+CREATE TABLE ord (
     userid   varchar(15) not null,
+    pid      int(5) not null,
     oid      int(5) not null,
-    price    decimal(9,2) UNSIGNED not null,
+    price    decimal(9,2) not null,
     odate    date not null,
-    onum     int(5) not null UNIQUE
+    onum     int(5) not null UNIQUE,
     primary key (oid),
     foreign key (userid) references user(userid),
     foreign key (pid) references product(pid)
