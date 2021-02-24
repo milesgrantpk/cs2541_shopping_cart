@@ -39,3 +39,5 @@ CREATE TABLE category (
     cname   varchar(50) not null UNIQUE,
     primary key (cname)
 );
+
+--This is a comment
