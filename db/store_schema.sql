@@ -26,7 +26,7 @@ DROP TABLE IF EXISTS order;
 CREATE TABLE order (
     userid   varchar(15) not null,
     oid      int(5) not null,
-    price    float(9,2) UNSIGNED not null,
+    price    decimal(9,2) UNSIGNED not null,
     odate    date not null,
     onum     int(5) not null UNIQUE
     primary key (oid),
